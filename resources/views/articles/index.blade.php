@@ -19,6 +19,7 @@
                             <td><{{ $article->content }}/td>
                             <td>
                                 <a href="{{ route('article.edit', $article) }}" class="btn btn-primary">Edit</a>
+                                {{-- <a href="{{ route('article.delete', $article) }}" class="btn btn-danger">Delete</a> --}}
                             </td>
                         </tr>
                     @endforeach
