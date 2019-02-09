@@ -11,7 +11,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="">Judul</label>
-                                <input type="text" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" name="title">
+                                <input type="text" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" name="title" value="{{ old('title') }}">
                                 @if ($errors->has('title'))
                                     <div class="form-control-feedback">{{ $errors->first('title') }}</div>
                                 @endif
@@ -19,7 +19,7 @@
 
                             <div class="form-group">
                                 <label for="">Konten</label>
-                                <textarea name="content" id="" cols="30" rows="5" class="form-control {{ $errors->has('content') ? 'is-invalid' : '' }}"></textarea>
+                                <textarea name="content" id="" cols="30" rows="5" class="form-control {{ $errors->has('content') ? 'is-invalid' : '' }}">{{ old('content') }}</textarea>
                                 @if ($errors->has('content'))
                                     <div class="form-control-feedback">{{ $errors->first('content') }}</div>
                                 @endif
