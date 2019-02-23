@@ -3,6 +3,7 @@
 Route::get('/', 'Frontend\\ArticleController@index')->name('homepage');
 
 Route::get('/article/{id}', 'Frontend\\ArticleController@show')->name('frontend.article.show');
+Route::post('/article/{id}', 'Frontend\\ArticleController@comment')->name('frontend.article.comment');
 
 
 Auth::routes();
@@ -18,4 +19,4 @@ Route::get('/user/{id}', 'UserController@show')->name('user.show');
 // Route::post('article', 'ArticleController@store')->name('article.store');
 // Route::delete('article/{id}/delete', 'ArticleController@destroy')->name('article.delete');
 //
-Route::resource('article', 'ArticleController')->middleware('auth');
+Route::resource('admin/article', 'ArticleController')->middleware('auth');

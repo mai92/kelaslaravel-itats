@@ -12,4 +12,30 @@
         <a href="#">{{ $article->user->name }}</a>
       </div>
     </div>
+
+    <div class="card mb-4">
+      <div class="card-body">
+        <h2 class="card-title">Komentar</h2>
+        <div class="">
+            @foreach ($comments as $comment)
+                <ul>
+                    <li>
+                        <p>{{ $comment->user->name }}</p>
+                        <p>{{ $comment->message }} <span class="text-muted">{{ $comment->created_at->diffForHumans() }}</span></p>
+                    </li>
+                </ul>
+            @endforeach
+        </div>
+        <form class="" action="{{ route('frontend.article.comment', $article) }}" method="post">
+            @csrf
+            <div class="form-group">
+                <textarea name="message" id="" cols="30" rows="4" class="form-control"></textarea>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Komentar" class="btn btn-primary">
+            </div>
+        </form>
+      </div>
+    </div>
 @endsection
