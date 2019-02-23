@@ -1,13 +1,15 @@
 <?php
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'Frontend\\ArticleController@index')->name('homepage');
+
+Route::get('/article/{id}', 'Frontend\\ArticleController@show')->name('frontend.article.show');
 
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/user', 'UserController@index')->name('user.index');
+Route::get('/user/{id}', 'UserController@show')->name('user.show');
 
 // Route::get('article', 'ArticleController@index')->name('article.index')->middleware('auth');
 // Route::get('article/create', 'ArticleController@create')->name('article.create')->middleware('auth');
