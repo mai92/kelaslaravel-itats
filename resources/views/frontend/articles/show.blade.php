@@ -26,16 +26,23 @@
                 </ul>
             @endforeach
         </div>
-        <form class="" action="{{ route('frontend.article.comment', $article) }}" method="post">
-            @csrf
-            <div class="form-group">
-                <textarea name="message" id="" cols="30" rows="4" class="form-control"></textarea>
-            </div>
+        @auth ()
+            <form class="" action="{{ route('frontend.article.comment', $article) }}" method="post">
+                @csrf
+                <div class="form-group">
+                    <textarea name="message" id="" cols="30" rows="4" class="form-control"></textarea>
+                </div>
 
-            <div class="form-group">
-                <input type="submit" value="Komentar" class="btn btn-primary">
+                <div class="form-group">
+                    <input type="submit" value="Komentar" class="btn btn-primary">
+                </div>
+            </form>
+        @endauth
+        @guest
+            <div class="">
+                <h5><a href="{{ route('login') }}">Login</a> dulu untuk komentar</h5>
             </div>
-        </form>
+        @endguest
       </div>
     </div>
 @endsection

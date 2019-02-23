@@ -26,17 +26,4 @@ class ArticleController extends Controller
             'comments' => $article->comments()->latest()->get(),
         ]);
     }
-
-    public function comment(Request $request, $id)
-    {
-        $comment = new Comment;
-
-        $comment->user_id = auth()->id();
-        $comment->article_id = $id;
-        $comment->message = $request->message;
-
-        $comment->save();
-
-        return redirect()->back();
-    }
 }

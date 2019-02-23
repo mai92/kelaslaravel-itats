@@ -3,7 +3,7 @@
 Route::get('/', 'Frontend\\ArticleController@index')->name('homepage');
 
 Route::get('/article/{id}', 'Frontend\\ArticleController@show')->name('frontend.article.show');
-Route::post('/article/{id}', 'Frontend\\ArticleController@comment')->name('frontend.article.comment');
+Route::post('/article/{id}', 'Frontend\\ArticleCommentController@store')->name('frontend.article.comment')->middleware('auth');
 
 
 Auth::routes();
