@@ -11,6 +11,7 @@
                         <th>Judul</th>
                         <th>Konten</th>
                         <th>Penulis</th>
+                        <th>Gambar</th>
                         <th>Aksi</th>
                     </tr>
 
@@ -20,6 +21,7 @@
                             <td>{{ $article->title }}</td>
                             <td>{{ str_limit($article->content, 50) }} <a href="{{ route('article.edit', $article) }}" >Baca Selenkapnya</a></td>
                             <td>{{ $article->user->name }}</td>
+                            <td><img src="{{ $article->getImage() }}" alt="" height="50px"></td>
                             <td>
                                 <a href="{{ route('article.edit', $article) }}" class="btn btn-primary">Edit</a>
                                 <button href="{{ route('article.destroy', $article) }}" class="btn btn-danger" id="delete">Delete</button>

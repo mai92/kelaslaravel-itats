@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Article;
+use Storage;
 
 class ArticleController extends Controller
 {
@@ -49,6 +50,7 @@ class ArticleController extends Controller
 
         $article->user_id = auth()->id();
         $article->title = $request->title;
+        $article->image = $request->file('image')->store('articles');
         $article->content = $request->content;
 
         $article->save();
@@ -99,8 +101,19 @@ class ArticleController extends Controller
 
         $article = Article::find($id);
 
+        $image = $article->image; // set nilai default variabel $image sesuai path yang ada di database
+
+        if ($request->hasFile('image')) { // check apakah request mengandung file "image"
+            if (Storage::exists($article->image)) { // check apakah didalam asset / project terdapat file image sesuai path dari database
+                Storage::delete($article->image); // Hapus gambar lama sesuai artikel
+            }
+
+            $image = $request->file('image')->store('articles');
+        }
+
         $article->user_id = auth()->id();
         $article->title = $request->title;
+        $article->image = $image;
         $article->content = $request->content;
 
         $article->save();
@@ -117,6 +130,10 @@ class ArticleController extends Controller
     public function destroy($id)
     {
         $article = Article::find($id);
+
+        if (Storage::exists($article->image)) {
+            Storage::delete($article->image);
+        }
 
         $article->delete();
 

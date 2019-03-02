@@ -19,4 +19,13 @@ class Article extends Model
     {
         return $this->hasMany(Comment::class);
     }
+
+    public function getImage()
+    {
+        if ($this->image && $this->image !== "") {
+            return asset('images/' . $this->image);
+        }
+
+        return "https://dummyimage.com/750x300/000/fff&text=Ga+Punya+Gambar";
+    }
 }

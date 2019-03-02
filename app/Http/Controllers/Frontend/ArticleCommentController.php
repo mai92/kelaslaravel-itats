@@ -25,6 +25,8 @@ class ArticleCommentController extends Controller
     {
         $comment = Comment::where('article_id', $articleId)->where('id', $commentId)->first();
 
+        $this->authorize('update', $comment);
+
         return view('frontend.articles.comments.edit', [
             'comment' => $comment,
         ]);
@@ -34,9 +36,16 @@ class ArticleCommentController extends Controller
     {
         $comment = Comment::where('article_id', $articleId)->where('id', $commentId)->first();
 
+        $this->authorize('update', $comment);
+
         $comment->message = $request->message;
         $comment->save();
 
         return redirect()->route('frontend.article.comment', $articleId);
+    }
+
+    public function destroy()
+    {
+        $this->authorize('hapu', $comment);
     }
 }

@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="tile">
-                <form class="" action="{{ route('article.store') }}" method="post">
+                <form class="" action="{{ route('article.store') }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
 
                     <div class="row">
@@ -14,6 +14,14 @@
                                 <input type="text" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" name="title" value="{{ old('title') }}">
                                 @if ($errors->has('title'))
                                     <div class="form-control-feedback">{{ $errors->first('title') }}</div>
+                                @endif
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Gambar</label>
+                                <input type="file" class="form-control {{ $errors->has('image') ? 'is-invalid' : '' }}" name="image" value="{{ old('image') }}">
+                                @if ($errors->has('image'))
+                                    <div class="form-control-feedback">{{ $errors->first('image') }}</div>
                                 @endif
                             </div>
 
