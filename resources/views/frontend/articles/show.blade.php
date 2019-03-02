@@ -21,7 +21,13 @@
                 <ul>
                     <li>
                         <p>{{ $comment->user->name }}</p>
-                        <p>{{ $comment->message }} <span class="text-muted">{{ $comment->created_at->diffForHumans() }}</span></p>
+                        <p>
+                            {{ $comment->message }} |
+                            @if ($comment->user_id === auth()->id())
+                                <a href="{!! route('frontend.article.comment.edit', [$comment->article_id, $comment]) !!}">Edit</a>
+                            @endif
+                        </p>
+                        <p><span class="text-muted">{{ $comment->created_at->diffForHumans() }}</span></p>
                     </li>
                 </ul>
             @endforeach

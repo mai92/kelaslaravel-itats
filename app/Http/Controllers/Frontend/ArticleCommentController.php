@@ -20,4 +20,13 @@ class ArticleCommentController extends Controller
 
         return redirect()->back();
     }
+
+    public function edit($articleId, $commentId)
+    {
+        $comment = Comment::where('article_id', $articleId)->where('id', $commentId)->first();
+        
+        return view('frontend.articles.comments.edit', [
+            'comment' => $comment,
+        ]);
+    }
 }

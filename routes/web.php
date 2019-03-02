@@ -4,6 +4,7 @@ Route::get('/', 'Frontend\\ArticleController@index')->name('homepage');
 
 Route::get('/article/{id}', 'Frontend\\ArticleController@show')->name('frontend.article.show');
 Route::post('/article/{id}', 'Frontend\\ArticleCommentController@store')->name('frontend.article.comment')->middleware('auth');
+Route::get('article/{articleId}/comment/{commentId}/edit', 'Frontend\\ArticleCommentController@edit')->name('frontend.article.comment.edit')->middleware('auth');
 
 
 Auth::routes();
