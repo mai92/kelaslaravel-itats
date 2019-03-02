@@ -24,9 +24,19 @@ class ArticleCommentController extends Controller
     public function edit($articleId, $commentId)
     {
         $comment = Comment::where('article_id', $articleId)->where('id', $commentId)->first();
-        
+
         return view('frontend.articles.comments.edit', [
             'comment' => $comment,
         ]);
+    }
+
+    public function update(Request $request, $articleId, $commentId)
+    {
+        $comment = Comment::where('article_id', $articleId)->where('id', $commentId)->first();
+
+        $comment->message = $request->message;
+        $comment->save();
+
+        return redirect()->route('frontend.article.comment', $articleId);
     }
 }
