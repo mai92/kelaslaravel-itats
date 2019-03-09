@@ -26,6 +26,6 @@ class Article extends Model
             return asset('images/' . $this->image);
         }
 
-        return "https://dummyimage.com/750x300/000/fff&text=Ga+Punya+Gambar";
+        return "https://dummyimage.com/750x300/000/fff&text=Gambar+Kosong";
     }
 }

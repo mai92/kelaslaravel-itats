@@ -78,6 +78,8 @@ class ArticleController extends Controller
     public function edit($id)
     {
         $article = Article::find($id);
+
+        $this->authorize('update', $article);
         // dd($article);
         return view('articles.edit', [
             'title' => 'Edit Article ' . $id,

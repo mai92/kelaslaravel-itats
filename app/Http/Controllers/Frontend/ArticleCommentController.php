@@ -46,6 +46,6 @@ class ArticleCommentController extends Controller
 
     public function destroy()
     {
-        $this->authorize('hapu', $comment);
+        $this->authorize('hapus', $comment);
     }
 }

@@ -8,7 +8,7 @@ Route::get('article/{articleId}/comment/{commentId}/edit', 'Frontend\\ArticleCom
 Route::post('article/{articleId}/comment/{commentId}/edit', 'Frontend\\ArticleCommentController@update')->name('frontend.article.comment.update')->middleware('auth');
 
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/user', 'UserController@index')->name('user.index');

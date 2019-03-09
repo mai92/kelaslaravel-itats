@@ -23,9 +23,9 @@
                         <p>{{ $comment->user->name }}</p>
                         <p>
                             {{ $comment->message }} |
-                            @if ($comment->user_id === auth()->id())
+                            {{-- @if ($comment->user_id === auth()->id()) --}}
                                 <a href="{!! route('frontend.article.comment.edit', [$comment->article_id, $comment]) !!}">Edit</a>
-                            @endif
+                            {{-- @endif --}}
                         </p>
                         <p><span class="text-muted">{{ $comment->created_at->diffForHumans() }}</span></p>
                     </li>
